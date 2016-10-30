@@ -89,10 +89,10 @@ class Page extends React.Component {
         );
     }
 }
-var mc = new MessageChannel();
+const mc = new MessageChannel();
 ReactDOM.render(
         <Page tern={mc.port1}/>,
         $("#reactroot")[0]
     );
 
-var mcsender=mc.port2;
+const mcsender=mc.port2;
