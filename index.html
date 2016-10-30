@@ -8,20 +8,29 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="lib/css/bootstrap.min.css">
+    <script src="lib/js/react.js"></script>
+    <script src="lib/js/react-dom.js"></script>
+    <script src="lib/js/babel.min.js"></script>
+      
+    <link rel="stylesheet" href="major.css">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="lib/fonts/isidora_light_macroman/stylesheet.css">
 </head>
 
 <body>
-    <h1>Hello, world!</h1>
+    <div id="reactroot"></div>
 
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
     <script>
         // load jQuery
-        require('./load_hybrid.js')
+        require('./load_hybrid.js');
     </script>
     <script src="lib/js/tether.min.js"></script>
     <script src="lib/js/bootstrap.min.js"></script>
+    <script type="text/babel" src="main_page.jsx">
+    </script>
 </body>
 <script>
-    require('./renderer.js')
+    require('./renderer.js');
 </script>
 </html>
