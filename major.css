@@ -7,3 +7,11 @@
 .annou{
     font-size: 45px;
 }
+
+.diceHeader{
+    margin: 8px;
+}
+
+.historyCard{
+    margin-top: 8px; !important
+}

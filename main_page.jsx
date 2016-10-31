@@ -4,7 +4,7 @@
 class Header extends React.Component {
     render(){
         return (
-            <nav className="navbar navbar-light bg-faded">
+            <nav className="navbar navbar-light bg-faded diceHeader">
             <a className="navbar-brand" href="#">抽奖器</a>
             </nav>
         );
@@ -26,7 +26,7 @@ class CurrentCard extends React.Component {
 class HistoryCard extends React.Component {
     render(){
         return (<div>
-                <div className="card">
+                <div className="card historyCard">
                         <div className="card-block">
                             {this.props.prizeTier}等奖:{this.props.prizeGoneTo}
                         </div>
@@ -125,9 +125,11 @@ class MainContent extends React.Component {
 class Page extends React.Component {
     render(){
         return (
-            <div className="container">
+            <div>
                 <Header></Header>
-                <MainContent tern={this.props.tern}></MainContent>
+                <div className="container">
+                    <MainContent tern={this.props.tern}></MainContent>
+                </div>
             </div>
         );
     }
