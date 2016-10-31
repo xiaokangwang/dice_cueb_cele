@@ -11,6 +11,7 @@
             this.flashtmp = 2;
             this.laststarttime = 0; /* second*1000 */
             this.laststartrank = 0;
+            this.flashCurrentCounter=0;
         }
         noToTier(no) {
             return this.rant[no];
@@ -21,16 +22,19 @@
         FlashStart(no) {
             this.laststarttime = new Date().getTime();
             this.laststartrank = no;
+            this.flashCurrentCounter=0;
             return true;
         }
         isFlashShouldKeep() {
-            if (this.laststarttime + 4000 < new Date().getTime()) {
+            if (this.laststarttime + 5000 < new Date().getTime()) {
                 return false;
             }
             return true;
         }
         getFlashInterval() {
-            return 60;
+            this.flashCurrentCounter++
+            let calcs =  60-11*Math.log(this.flashCurrentCounter);
+            return calcs;
         }
         getNextWinner() {
             return 88;

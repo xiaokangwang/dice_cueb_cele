@@ -70,7 +70,7 @@ class MainContent extends React.Component {
       }
     }
     handleMessage(e){
-      console.log(e.data);
+      //console.log(e.data);
       (()=>{
         const popupv = number => {
           return this.state.logic.getFlashNoS(number);
