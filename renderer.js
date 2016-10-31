@@ -24,29 +24,29 @@
             return true;
         }
         isFlashShouldKeep() {
-          if(this.laststarttime+4000<new Date().getTime()){
-            return false;
-          }
+            if (this.laststarttime + 4000 < new Date().getTime()) {
+                return false;
+            }
             return true;
         }
         getFlashInterval() {
             return 60;
         }
         getNextWinner() {
-          return 88;
+            return 88;
         }
-        shouldMoveToHistory(no){
-          return true;
+        shouldMoveToHistory(no) {
+            return true;
         }
-        getnoInRank(no){
-          let counter=0;
-          let rant=this.rant;
-          let ct=this.noToTier(no);
-          while(no!=-1&&rant[no]===ct){
-            counter+=1;
-            no--;
-          }
-          return counter;
+        getnoInRank(no) {
+            let counter = 0;
+            let rant = this.rant;
+            let ct = this.noToTier(no);
+            while (no != -1 && rant[no] === ct) {
+                counter += 1;
+                no--;
+            }
+            return counter;
         }
     };
 }());
