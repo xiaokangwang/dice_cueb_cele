@@ -38,5 +38,15 @@
         shouldMoveToHistory(no){
           return true;
         }
+        getnoInRank(no){
+          let counter=0;
+          let rant=this.rant;
+          let ct=this.noToTier(no);
+          while(no!=-1&&rant[no]===ct){
+            counter+=1;
+            no--;
+          }
+          return counter;
+        }
     };
 }());

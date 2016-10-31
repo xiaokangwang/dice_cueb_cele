@@ -63,6 +63,10 @@ class MainContent extends React.Component {
     handleWinnerGen(winner){
       if(this.state.logic.shouldMoveToHistory(this.state.currentNo)){
         this.state.history.prizes[this.state.currentNo]=winner;
+        this.setState({
+          //currentNo:this.state.currentNo,
+          currentNoS:winner
+        });
       }
     }
     handleMessage(e){
@@ -72,6 +76,11 @@ class MainContent extends React.Component {
           return this.state.logic.getFlashNoS(number);
         };
         if(e.data==="start-counting"){
+          if(this.state.currentNoS!="TBA"){
+            this.setState({
+              currentNo:this.state.currentNo+1,
+            });
+          }
           let updateFlash = ()=> {
             ($.proxy(c=>{
               let ncurrs=popupv(this.state.currentNo);
@@ -100,7 +109,9 @@ class MainContent extends React.Component {
             <div>
                 <div className="row">
                     <div className="col-sm-8">
-                        <CurrentCard currentTier={(()=>{return this.calcTier(this.state.currentNo)})()} currentNo={this.state.currentNo} currentNoS={this.state.currentNoS}></CurrentCard>
+                        <CurrentCard currentTier={(()=>{return this.calcTier(this.state.currentNo)})()}
+                        currentNo={this.state.logic.getnoInRank(this.state.currentNo)}
+                        currentNoS={this.state.currentNoS}></CurrentCard>
                     </div>
                     <div className="col-sm-4">
                         <HistoryCardList history={this.state.history.prizes}></HistoryCardList>
