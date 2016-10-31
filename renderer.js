@@ -6,6 +6,12 @@
     function getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
+
+    function getRandomIntSecure(min, max) {
+        var array = new Uint32Array(1);
+        window.crypto.getRandomValues(array);
+        return array[0] % (max - min + 1) + min;
+    }
     window.tf = () => {
         console.log("x");
     };
@@ -22,7 +28,7 @@
             ];
             this.flashtmp = 2;
             this.laststarttime = 0; /* second*1000 */
-            this.laststartrank = 0;
+            this.laststartno = 0;
             this.flashCurrentCounter = 0;
         }
         noToTier(no) {
@@ -34,7 +40,7 @@
         }
         FlashStart(no) {
             this.laststarttime = new Date().getTime();
-            this.laststartrank = no;
+            this.laststartno = no;
             this.flashCurrentCounter = 0;
             return true;
         }
@@ -46,11 +52,13 @@
         }
         getFlashInterval() {
             this.flashCurrentCounter++;
-            let calcs = 2*(60 - 13 * Math.log(this.flashCurrentCounter));
+            let calcs = 2 * (60 - 13 * Math.log(this.flashCurrentCounter));
             return calcs;
         }
         getNextWinner() {
-            return 88;
+            let no = this.laststartno;
+            let ranges = this.prizeSummonDistribution[no];
+            return getRandomIntSecure(ranges[0], ranges[1]);
         }
         shouldMoveToHistory(no) {
             return true;

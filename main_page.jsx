@@ -95,7 +95,7 @@ class MainContent extends React.Component {
 
             }))();
           };
-          this.state.logic.FlashStart();
+          this.state.logic.FlashStart(this.state.currentNo);
           setTimeout(updateFlash, this.state.logic.getFlashInterval());
         }
       })();
@@ -145,3 +145,7 @@ const mcsender=mc.port2;
 const sendmsg=msg=>{
   return mcsender.postMessage(msg);
 };
+
+function ThrowDice(){
+  sendmsg("start-counting");
+}
