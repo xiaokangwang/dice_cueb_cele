@@ -10,8 +10,10 @@
     <link rel="stylesheet" href="lib/css/bootstrap.min.css">
     <script src="lib/js/react.js"></script>
     <script src="lib/js/react-dom.js"></script>
-    <script src="lib/js/babel.min.js"></script>
-      
+    <!--<script src="lib/js/babel.min.js"></script>-->
+    <script>
+        require('./renderer.js');
+    </script>
     <link rel="stylesheet" href="major.css">
     <!-- Fonts -->
     <link rel="stylesheet" href="lib/fonts/isidora_light_macroman/stylesheet.css">
@@ -27,10 +29,8 @@
     </script>
     <script src="lib/js/tether.min.js"></script>
     <script src="lib/js/bootstrap.min.js"></script>
-    <script type="text/babel" src="main_page.jsx">
+    <!--<script type="text/babel" src="main_page.jsx">-->
+    <script src="main_page.js"></script>
     </script>
 </body>
-<script>
-    require('./renderer.js');
-</script>
 </html>

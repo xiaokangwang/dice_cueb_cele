@@ -16,7 +16,7 @@ class CurrentCard extends React.Component {
         return (<div>
             <div className="jumbotron">
                 <p className="annou">{this.props.currentTier}等奖，第{this.props.currentNo}位:</p>
-                <h1 className="currentnum">{this.props.currentNo}</h1>
+                <h1 className="currentnum">{this.props.currentNoS}</h1>
             </div>
             </div>
         );
@@ -53,22 +53,37 @@ class MainContent extends React.Component {
         super();
         this.state = {
                 history : {
-                    prizes: Array(6).fill("***")
+                    prizes: Array(6).fill("TBA")
                 },
-                currentNo:0
+                currentNo:0,
+                currentNoS:0,
+                logic:new window.logicm()
         };
     }
     handleMessage(e){
       console.log(e.data);
+      (()=>{
+        const popupv = number => {
+          return this.state.logic.getFlashNoS(number);
+        };
+        if(e=="start-counting"){
+          setTimeout($.proxy(c=>{
+            let ncurrs=popupv(this.state.currentNo);
+            this.state.currentNoS=ncurrs;
+          }), 100);
+        }
+      })();
+    }
+    calcTier(no){
+      return this.state.logic.noToTier(no);
     }
     render(){
         this.props.tern.onmessage= e => {this.handleMessage(e)} ;
-        console.log(mc.port1);
         return (
             <div>
                 <div className="row">
                     <div className="col-sm-8">
-                        <CurrentCard></CurrentCard>
+                        <CurrentCard currentTier={(()=>{return this.calcTier(this.state.currentNo)})()} currentNo={this.state.currentNo} currentNoS={this.state.currentNoS}></CurrentCard>
                     </div>
                     <div className="col-sm-4">
                         <HistoryCardList history={this.state.history.prizes}></HistoryCardList>
