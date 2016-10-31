@@ -56,12 +56,14 @@ class MainContent extends React.Component {
                     prizes: Array(6).fill("TBA")
                 },
                 currentNo:0,
-                currentNoS:0,
+                currentNoS:"TBA",
                 logic:new window.logicm()
         };
     }
     handleWinnerGen(winner){
-
+      if(this.state.logic.shouldMoveToHistory(this.state.currentNo)){
+        this.state.history.prizes[this.state.currentNo]=winner;
+      }
     }
     handleMessage(e){
       console.log(e.data);

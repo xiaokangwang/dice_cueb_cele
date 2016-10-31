@@ -35,5 +35,8 @@
         getNextWinner() {
           return 88;
         }
+        shouldMoveToHistory(no){
+          return true;
+        }
     };
 }());
