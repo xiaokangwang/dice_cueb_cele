@@ -1,5 +1,5 @@
 .currentnum {
-    font-family: 'isidoralight'; 
+    font-family: 'isidoralight';
     font-size: 160px;
     text-align: center;
 }
@@ -14,4 +14,8 @@
 
 .historyCard{
     margin-top: 8px; !important
+}
+
+.histblk{
+    text-align: center;
 }

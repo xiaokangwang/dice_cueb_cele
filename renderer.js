@@ -73,5 +73,11 @@
             }
             return counter;
         }
+        reachmax(){
+          if(this.rant.length-1>this.laststartno){
+            return false;
+          }
+          return true;
+        }
     };
 }());

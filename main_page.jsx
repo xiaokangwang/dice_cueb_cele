@@ -27,7 +27,7 @@ class HistoryCard extends React.Component {
     render(){
         return (<div>
                 <div className="card historyCard">
-                        <div className="card-block">
+                        <div className="card-block histblk">
                             {this.props.prizeTier}等奖:{this.props.prizeGoneTo}
                         </div>
                 </div>
@@ -76,6 +76,10 @@ class MainContent extends React.Component {
           return this.state.logic.getFlashNoS(number);
         };
         if(e.data==="start-counting"){
+          if(this.state.logic.reachmax()){
+            console.log("All rewards distributed.");
+            return;
+          }
           if(this.state.currentNoS!="TBA"){
             this.setState({
               currentNo:this.state.currentNo+1,
