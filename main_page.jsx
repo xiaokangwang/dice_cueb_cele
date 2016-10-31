@@ -135,10 +135,13 @@ class Page extends React.Component {
     }
 }
 const mc = new MessageChannel();
-ReactDOM.render(
-        <Page tern={mc.port1}/>,
-        $("#reactroot")[0]
-    );
+
+var LoadPage = () => {
+  ReactDOM.render(
+          <Page tern={mc.port1}/>,
+          $("#reactroot")[0]
+      );
+};
 
 const mcsender=mc.port2;
 
@@ -149,3 +152,4 @@ const sendmsg=msg=>{
 function ThrowDice(){
   sendmsg("start-counting");
 }
+LoadPage();
