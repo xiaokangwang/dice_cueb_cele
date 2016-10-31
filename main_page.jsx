@@ -117,3 +117,7 @@ ReactDOM.render(
     );
 
 const mcsender=mc.port2;
+
+const sendmsg=msg=>{
+  return mcsender.postMessage(msg);
+};
