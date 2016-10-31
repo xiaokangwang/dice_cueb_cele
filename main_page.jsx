@@ -60,22 +60,31 @@ class MainContent extends React.Component {
                 logic:new window.logicm()
         };
     }
+    handleWinnerGen(winner){
+
+    }
     handleMessage(e){
       console.log(e.data);
       (()=>{
         const popupv = number => {
           return this.state.logic.getFlashNoS(number);
         };
-        if(e==="start-counting"){
+        if(e.data==="start-counting"){
           let updateFlash = ()=> {
             ($.proxy(c=>{
               let ncurrs=popupv(this.state.currentNo);
-              this.state.currentNoS=ncurrs;
+              //this.state.currentNoS=ncurrs;
+              this.setState({currentNoS:ncurrs});
               if(this.state.logic.isFlashShouldKeep()){
                 setTimeout(updateFlash, this.state.logic.getFlashInterval());
+              }else{
+                let nxtwinner=this.state.logic.getNextWinner();
+                this.handleWinnerGen(nxtwinner);
               }
+
             }))();
           };
+          this.state.logic.FlashStart();
           setTimeout(updateFlash, this.state.logic.getFlashInterval());
         }
       })();

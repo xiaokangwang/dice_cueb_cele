@@ -8,22 +8,32 @@
     window.logicm = class Logic {
         constructor() {
             this.rant = [3, 3, 3, 2, 2, 1];
-            this.flashtmp=2;
+            this.flashtmp = 2;
+            this.laststarttime = 0; /* second*1000 */
+            this.laststartrank = 0;
         }
         noToTier(no) {
             return this.rant[no];
         }
-        getFlashNoS(no){
+        getFlashNoS(no) {
             return this.flashtmp++;
         }
-        FlashStart(no){
-          return true;
+        FlashStart(no) {
+            this.laststarttime = new Date().getTime();
+            this.laststartrank = no;
+            return true;
         }
-        isFlashShouldKeep(){
-          return true;
+        isFlashShouldKeep() {
+          if(this.laststarttime+4000<new Date().getTime()){
+            return false;
+          }
+            return true;
         }
-        getFlashInterval(){
-          return 100;
+        getFlashInterval() {
+            return 60;
+        }
+        getNextWinner() {
+          return 88;
         }
     };
 }());
