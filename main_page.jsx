@@ -66,11 +66,17 @@ class MainContent extends React.Component {
         const popupv = number => {
           return this.state.logic.getFlashNoS(number);
         };
-        if(e=="start-counting"){
-          setTimeout($.proxy(c=>{
-            let ncurrs=popupv(this.state.currentNo);
-            this.state.currentNoS=ncurrs;
-          }), 100);
+        if(e==="start-counting"){
+          let updateFlash = ()=> {
+            ($.proxy(c=>{
+              let ncurrs=popupv(this.state.currentNo);
+              this.state.currentNoS=ncurrs;
+              if(this.state.logic.isFlashShouldKeep()){
+                setTimeout(updateFlash, this.state.logic.getFlashInterval());
+              }
+            }))();
+          };
+          setTimeout(updateFlash, this.state.logic.getFlashInterval());
         }
       })();
     }

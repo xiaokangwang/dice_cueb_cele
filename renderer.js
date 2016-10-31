@@ -16,5 +16,14 @@
         getFlashNoS(no){
             return this.flashtmp++;
         }
+        FlashStart(no){
+          return true;
+        }
+        isFlashShouldKeep(){
+          return true;
+        }
+        getFlashInterval(){
+          return 100;
+        }
     };
 }());
