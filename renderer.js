@@ -30,6 +30,7 @@
             this.laststarttime = 0; /* second*1000 */
             this.laststartno = 0;
             this.flashCurrentCounter = 0;
+            this.historys = [];
         }
         noToTier(no) {
             return this.rant[no];
@@ -58,7 +59,20 @@
         getNextWinner() {
             let no = this.laststartno;
             let ranges = this.prizeSummonDistribution[no];
-            return getRandomIntSecure(ranges[0], ranges[1]);
+            let winner = -1;
+            while ((ProposedWinner => {
+                    if (ProposedWinner === -1) {
+                        return true;
+                    }
+                    if (this.historys.indexOf(ProposedWinner) != -1) {
+                        return true;
+                    }
+                    this.historys.push(ProposedWinner);
+                    return false;
+                })(winner)) {
+                winner = getRandomIntSecure(ranges[0], ranges[1]);
+            }
+            return winner;
         }
         shouldMoveToHistory(no) {
             return true;
@@ -73,11 +87,11 @@
             }
             return counter;
         }
-        reachmax(){
-          if(this.rant.length-1>this.laststartno){
-            return false;
-          }
-          return true;
+        reachmax() {
+            if (this.rant.length - 1 > this.laststartno) {
+                return false;
+            }
+            return true;
         }
     };
 }());
