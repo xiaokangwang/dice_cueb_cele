@@ -59,6 +59,9 @@
         getNextWinner() {
             let no = this.laststartno;
             let ranges = this.prizeSummonDistribution[no];
+            /*make sure that result is reasonable by preventing
+            the rare case when a person win mutiply prizes.
+            */
             let winner = -1;
             while ((ProposedWinner => {
                     if (ProposedWinner === -1) {
