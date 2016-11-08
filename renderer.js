@@ -53,7 +53,7 @@
         }
         getFlashInterval() {
             this.flashCurrentCounter++;
-            let calcs = 2 * (60 - 13 * Math.log(this.flashCurrentCounter));
+            let calcs = 3 * (40 - 0.5*Math.exp(this.flashCurrentCounter/10));
             return calcs;
         }
         getNextWinner() {
